@@ -1,9 +1,10 @@
-import Group from "./Group";
+/* eslint-disable no-unused-vars */
+import Group from "../Groups/Group";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { AlignJustify } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { Avatar } from "../ui/avatar";
+import { Avatar } from "../../ui/avatar";
 import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Dashboard = () => {

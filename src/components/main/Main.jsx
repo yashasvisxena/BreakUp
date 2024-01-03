@@ -1,12 +1,12 @@
-// import Dashboard from "./Dashboard"
+import Dashboard from "./Dashboard/Dashboard"
 
-import Specificgrp from "./Specificgrp"
+import Specificgrp from "./Groups/Specificgrp"
 
 
 const Main = () => {
   return (
     <div className="h-screen mx-2 mb-2 p-2">
-        {/* <Dashboard/> */}
+        <Dashboard/>
         <Specificgrp/>
     </div>
   )

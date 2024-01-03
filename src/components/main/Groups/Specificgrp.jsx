@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Groupdetails from "./Groupdetails";
+import Groupdetails from "./GroupDetails/Groupdetails";
 
 const Specificgrp = () => {
   return (
