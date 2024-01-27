@@ -5,10 +5,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Groupdetails from "./GroupDetails/Groupdetails";
+import GroupTransaction from "./GroupTransaction";
 
 const Specificgrp = () => {
   return (
-    <div className="h-full w-full justify-start items-start flex flex-col">
+    <div className="h-full w-full relative justify-start items-start flex flex-col">
       <Accordion type="single" collapsible className=" w-full">
         <AccordionItem value="item-1" className="w-full">
           <AccordionTrigger className="flex sm:justify-center w-full">
@@ -26,6 +27,7 @@ const Specificgrp = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <GroupTransaction/>
     </div>
   );
 };
