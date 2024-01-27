@@ -28,7 +28,7 @@ function Navbar() {
             <span className="text-blue-500">.</span>
           </h2>
             <h3 className="text-center scroll-m-20 hidden sm:text-lg font-semibold tracking-tight">
-              Split Bills not Friendship
+              Split Bills not FriendShip
             </h3>
             
         </div>
