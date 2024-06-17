@@ -45,6 +45,7 @@ const userSchema = new Schema(
         ref: "Group",
       },
     ],
+    //hello 
     friends: [
       {
         type: Schema.Types.ObjectId,
