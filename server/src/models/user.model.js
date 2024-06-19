@@ -19,6 +19,20 @@ const userSchema = new Schema(
       minlength: 8,
       maxlength: 20,
     },
+    upi: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    number: {
+      countrycode: {
+        type: String,
+        required: true,
+      },
+      type: String,
+      required: true,
+      unique: true,
+    },
     avatar: {
       type: String,
       required: false,
@@ -29,21 +43,37 @@ const userSchema = new Schema(
         ref: "Group",
       },
     ],
-    //hello 
+    //hello
     friends: [
       {
         type: Schema.Types.ObjectId,
         ref: "User",
       },
     ],
-    debt : {
-      type : Number,
-      default : 0
-    },
-    owed : {
-      type : Number,
-      default : 0
-    }
+    debts: [
+      {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "User",
+        },
+        amount: {
+          type: Number,
+          default: 0,
+        },
+      },
+    ],
+    owes: [
+      {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "User",
+        },
+        amount: {
+          type: Number,
+          default: 0,
+        },
+      },
+    ],
   },
   {
     timestamps: true,
