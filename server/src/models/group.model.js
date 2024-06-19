@@ -1,48 +1,21 @@
 import { mongoose, Schema } from "mongoose";
 
-const groupSchema = new Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-      index: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    category: {
-      type: String,
-      required: true,
-    },
-    icon: {
-      type: String,
-      required: true,
-    },
-    members: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
-    transactions: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Transaction",
-      },
-    ],
-    statistics: groupStatsSchema,
-    createdBy: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-      index: true,
-    },
+const debtSchema = new Schema({
+  from: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
   },
-  {
-    timestamps: true,
-  }
-);
+  to: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  amount: {
+    type: Number,
+    required: true,
+  },
+});
 
 const groupStatsSchema = new Schema({
   totalExpenses: {
@@ -65,21 +38,57 @@ const groupStatsSchema = new Schema({
   debts: [debtSchema],
 });
 
-const debtSchema = new Schema({
-  from: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+const groupSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    icon: {
+      type: String,
+      required: true,
+    },
+    members: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        index: true,
+      },
+    ],
+    transactions: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Transaction",
+      },
+    ],
+    statistics: groupStatsSchema,
+    createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+      index: true,
+    },
   },
-  to: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  amount: {
-    type: Number,
-    required: true,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
+
+// Add compound indexes
+groupSchema.index({ createdBy: 1, category: 1 });
+groupSchema.index({ createdBy: 1, name: 1 });
+
+// Ensure efficient querying for members
+groupSchema.index({ "members": 1 });
 
 export const Group = mongoose.model("Group", groupSchema);
