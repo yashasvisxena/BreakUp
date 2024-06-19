@@ -29,9 +29,11 @@ const userSchema = new Schema(
         type: String,
         required: true,
       },
-      type: String,
-      required: true,
-      unique: true,
+      number: {
+        type: String,
+        required: true,
+        unique: true,
+      },
     },
     avatar: {
       type: String,
@@ -43,7 +45,6 @@ const userSchema = new Schema(
         ref: "Group",
       },
     ],
-    //hello
     friends: [
       {
         type: Schema.Types.ObjectId,
